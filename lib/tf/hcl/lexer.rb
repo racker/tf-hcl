@@ -36,7 +36,9 @@ module Tf
       # Octal
       rule(/0\d+/) { |t| [:OCTAL, t.to_i(8)] }
       # Integers
-      rule(/[1-9]\d*/) { |t| [:INTEGER, t.to_i] }
+      rule(/[0-9]\d*/) { |t| [:INTEGER, t.to_i] }
+      # -ve Integers for Step Adjustment in ASG
+      rule(/-[1-9]\d*/) { |t| [:INTEGER, t.to_i] }
       # Hexadecimal
       rule(/0x[A-Fa-f\d]+/) { |t| [:HEXADECIMAL, t.to_i(16)] }
       # Scientific Notation
