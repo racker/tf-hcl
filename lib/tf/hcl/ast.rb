@@ -44,7 +44,7 @@ module Tf
       value :name, ::String
 
       def to_hcl
-        if value[0] =~ /[A-Za-z]/
+        if value[/[A-Za-z_]+/] == value
           value
         else
           "\"#{value}\""
